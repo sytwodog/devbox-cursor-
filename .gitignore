@@ -35,3 +35,13 @@ lerna-debug.log*
 .env
 .env.local
 .env.*.local
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Spring Boot
+*.properties
+!application.properties.example

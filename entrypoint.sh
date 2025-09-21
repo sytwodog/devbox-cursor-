@@ -1,25 +1,14 @@
 #!/bin/bash
-app_env=${1:-development}
 
-# Development environment commands
-dev_commands() {
-    echo "Running Vue development environment with Vite..."
-    npm run dev
-}
-
-# Production environment commands
-prod_commands() {
-    echo "Running Vue production environment..."
+# 检查是否为生产环境
+if [ "$1" = "production" ]; then
+    echo "Building for production..."
     npm run build
-    # Use Vite's built-in preview server instead of serve
     npm run preview
-}
-
-# Check environment variables to determine the running environment
-if [ "$app_env" = "production" ] || [ "$app_env" = "prod" ] ; then
-    echo "Production environment detected"
-    prod_commands
 else
-    echo "Development environment detected"
-    dev_commands
+    echo "Starting development server..."
+    # 安装依赖
+    npm install
+    # 启动开发服务器
+    npm run dev
 fi

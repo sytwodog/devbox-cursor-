@@ -1,22 +1,90 @@
-# Vue.js Web Application Example
+# 智学云帆-教学管理系统
 
-This is a modern Vue.js 3 frontend application example that demonstrates a basic web application setup with Vite.
+这是一个完整的教学管理系统，包含前后端代码。后端基于Spring Boot开发，前端使用Vue.js 3构建。
 
-## Project Description
+## 技术栈
 
-This project creates a responsive single-page application using Vue.js 3 and Vite. The application demonstrates Vue's component structure, reactivity system, and styling capabilities. The development server listens on port 3000 and provides hot module replacement for a smooth development experience.
+### 后端技术栈
+- Spring Boot
+- Spring Security
+- MyBatis
+- MySQL
+- JWT
 
-## Environment
+### 前端技术栈
+- Vue.js 3
+- Vite
+- Element Plus
+- Vue Router
+- Axios
 
-This project runs on a Debian 12 system with Node.js and Vue.js 3.4.29, which is pre-configured in the Devbox environment. You don't need to worry about setting up Node.js, npm, or Vue dependencies yourself. The development environment includes all necessary tools for building and running Vue applications, including Vite for fast development and optimized builds. If you need to make adjustments to match your specific requirements, you can modify the configuration files accordingly.
+## 主要功能
 
-## Project Execution
+- 用户登录认证
+- 员工信息管理
+- 部门管理
+- 文件上传
+- 响应式布局
+- 权限控制
 
-**Development mode:** For normal development environment, simply enter Devbox and run `bash entrypoint.sh` in the terminal. This will start the Vite development server with hot-reload enabled.
+## 快速开始
 
-**Production mode:** After release, the project will be automatically packaged into a Docker image and deployed according to the `entrypoint.sh` script with production parameters (run `bash entrypoint.sh production`). This will build optimized static files and serve them using Vite's preview server.
+### 后端启动
+1. 配置数据库
+   - 复制 `src/main/resources/application.properties.example` 为 `application.properties`
+   - 修改数据库连接信息
 
+2. 运行后端
+```bash
+./mvnw spring-boot:run
+```
 
-DevBox: Code. Build. Deploy. We've Got the Rest.
+### 前端启动
+1. 安装依赖
+```bash
+npm install
+```
 
-With DevBox, you can focus entirely on writing great code while we handle the infrastructure, scaling, and deployment. Seamless development from start to production. 
+2. 开发模式运行
+```bash
+npm run dev
+```
+
+3. 生产环境构建
+```bash
+npm run build
+```
+
+## 接口文档
+
+### 登录接口
+- POST `/login`
+- 请求体：
+```json
+{
+    "username": "用户名",
+    "password": "密码"
+}
+```
+
+### 员工管理接口
+- GET `/emps` - 获取员工列表
+- POST `/emps` - 添加员工
+- PUT `/emps` - 更新员工信息
+- DELETE `/emps/{id}` - 删除员工
+
+## 系统配置
+
+### 后端配置
+- 默认服务端口：8080
+- 文件上传大小限制：10MB
+
+### 前端配置
+- 开发服务器端口：3000
+- 接口代理配置：见 `vite.config.js`
+
+## 注意事项
+
+- 首次使用请修改后端 `application.properties` 中的数据库配置
+- 确保后端服务器正常运行后再启动前端服务
+- 文件上传功能需要正确配置存储路径
